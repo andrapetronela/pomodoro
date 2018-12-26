@@ -43,7 +43,10 @@ body {
     margin-top: 2rem;
     text-align: center;
 }
-
+#time-left {
+    display: inline-flex;
+    margin: 2rem;
+}
 
 
 
