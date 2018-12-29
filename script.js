@@ -10,7 +10,6 @@ class App extends React.Component {
             timer: 0,
             initialSeconds: 0,
             initialSession: 25,
-            tempMinutes: 0,
         }
         
     this.startTimer = this.startTimer.bind(this);
@@ -25,7 +24,7 @@ class App extends React.Component {
 
     startTimer() {
             this.state.seconds = 60;
-            this.state.tempMinutes = this.state.minutes;
+
             this.interval = setInterval(() => {
             this.setState({
                 seconds: this.state.seconds-1,
@@ -41,19 +40,30 @@ class App extends React.Component {
                 
             if (this.state.minutes < 10) {
                 this.setState({
-                    minutes: '0' + this.state.minutes
+                    minutes: '0' + this.state.minutes,
                 });
             }
 
-            if (this.state.seconds < 1) {
-                
+            if (this.state.seconds == 0) {
                 this.setState({
-                    seconds: 59,
-                    minutes: this.state.tempMinutes-1,
+                    seconds: 59, 
+                    minutes: this.state.minutes,
                 });
-//                this.startTimer;
+                this.startTimer;
             }
-        }, 1000); 
+        }, 1000);
+        
+        if (this.state.seconds == 1) {
+            this.setState({
+                minutes: this.minInterval - 1,
+            })
+        }
+        
+        this.minInterval = setInterval(() => {
+            this.setState({
+                minutes: this.state.session_length-1
+            });
+        }, 60*1000);
     }
     
 
