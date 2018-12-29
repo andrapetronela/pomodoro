@@ -106,7 +106,8 @@ class App extends React.Component {
     
     sessionInc() {
         this.setState({
-            session_length: this.state.session_length + 1
+            session_length: this.state.session_length + 1,
+            
         });
         if (this.state.session_length === 60) {
             this.setState({
@@ -145,7 +146,7 @@ class App extends React.Component {
                     <div id="timer-title">
                         <p>Session</p>
                         <p id="time-left">
-                            <span id="minutes">{this.state.minutes}:</span>
+                            <span id="minutes">{this.state.session_length}:</span>
                             <span id="seconds">{this.state.seconds}</span>
                         </p>
                     </div>
