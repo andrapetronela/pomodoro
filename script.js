@@ -4,12 +4,9 @@ class App extends React.Component {
         this.state = {
             break_length: 5,
             session_length: 25,
-            time_left: 25,
             minutes: 25,
-            seconds: 0,
-            timer: 0,
+            seconds: 60,
             initialSeconds: 0,
-            initialSession: 25,
         }
         
     this.startTimer = this.startTimer.bind(this);
@@ -20,16 +17,16 @@ class App extends React.Component {
     this.sessionDec = this.sessionDec.bind(this);
     }
     
-    
-
     startTimer() {
             this.state.seconds = 60;
-
+            this.state.minutes = this.state.session_length;
             this.interval = setInterval(() => {
             this.setState({
                 seconds: this.state.seconds-1,
                 minutes: this.state.session_length-1,
             });
+             
+            document.getElementById('seconds').textContent = this.state.seconds;
                 
             console.log(this.state.minutes + ':' + this.state.seconds);
             if (this.state.seconds < 10) {
@@ -42,40 +39,46 @@ class App extends React.Component {
                 this.setState({
                     minutes: '0' + this.state.minutes,
                 });
+            } 
+            if (this.state.seconds < 10) {
+                console.log('seconds less than 10');
+                this.setState({
+                    seconds: '0' + this.state.seconds,
+                })
             }
 
             if (this.state.seconds == 0) {
                 this.setState({
-                    seconds: 59, 
-                    minutes: this.state.minutes,
+                    seconds: 60, 
+                    minutes: this.state.minutes-1,
                 });
                 this.startTimer;
             }
         }, 1000);
         
-        if (this.state.seconds == 1) {
-            this.setState({
-                minutes: this.minInterval - 1,
-            })
+        if (this.state.seconds == 0) {
+            this.startTimer;
+            this.state.session_length -= 1;
         }
-        
-        this.minInterval = setInterval(() => {
-            this.setState({
-                minutes: this.state.session_length-1
-            });
-        }, 60*1000);
+            
+//        this.minInterval = setInterval(() => {
+//            this.setState({
+//                minutes: this.state.session_length-1
+//            });
+//        }, 60*1000);
     }
     
 
     stopTimer() {
-       
+       document.getElementById('seconds').textContent = '0' + this.state.initialSeconds;
         clearInterval(this.interval);
         this.setState({
             seconds: '0' + this.state.initialSeconds,
             minutes: 25,
             break_length: 5,
             session_length: 25,
-        })
+        });
+        
     }
     // break length
     breakInc() {
@@ -105,6 +108,7 @@ class App extends React.Component {
     // session length
     
     sessionInc() {
+       
         this.setState({
             session_length: this.state.session_length + 1,
             
@@ -118,7 +122,8 @@ class App extends React.Component {
     
     sessionDec() {
             this.setState({
-            session_length: this.state.session_length - 1
+            session_length: this.state.session_length - 1,
+            minutes: this.state.session_length,
         })
         if (this.state.session_length === 1) {
             this.setState({
@@ -146,8 +151,8 @@ class App extends React.Component {
                     <div id="timer-title">
                         <p>Session</p>
                         <p id="time-left">
-                            <span id="minutes">{this.state.session_length}:</span>
-                            <span id="seconds">{this.state.seconds}</span>
+                            <span id="minutes">{this.state.minutes}:</span>
+                            <span id="seconds">{'0' + this.state.initialSeconds}</span>
                         </p>
                     </div>
                     <button id="start_stop" onClick={this.startTimer}>Play</button>
