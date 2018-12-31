@@ -8,6 +8,7 @@ class App extends React.Component {
             seconds: 60,
             initialSeconds: 0,
             break_session: false,
+            start: false,
         }
         
     this.startTimer = this.startTimer.bind(this);
@@ -16,6 +17,7 @@ class App extends React.Component {
     this.breakDec = this.breakDec.bind(this);
     this.sessionInc = this.sessionInc.bind(this);
     this.sessionDec = this.sessionDec.bind(this);
+    this.pause = this.pause.bind(this);
     }
     
     startTimer() {
@@ -24,6 +26,7 @@ class App extends React.Component {
             this.interval = setInterval(() => {
             this.setState({
                 seconds: this.state.seconds-1,
+                start: true,
             });
             
         document.getElementById('seconds').textContent = this.state.seconds;
@@ -128,6 +131,17 @@ class App extends React.Component {
         }
     }
     
+    pause() {
+        this.setState({
+            start: false,
+            minutes: this.state.minutes,
+            seconds: this.state.seconds,
+            session_length: this.state.session_length,
+            break_length: this.state.break_length,
+        })
+        clearInterval(this.interval);
+    }
+    
     
         
     render() {
@@ -154,7 +168,7 @@ class App extends React.Component {
                             <span id="seconds">{'0' + this.state.initialSeconds}</span>
                         </p>
                     </div>
-                    <button id="start_stop" onClick={this.startTimer}>Play</button>
+                    <button id="start_stop" onClick={this.state.start===false ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
                     <button id="reset" onClick={this.stopTimer}>Reset</button>
                     <div id='break-begun'></div>
                 </div>
