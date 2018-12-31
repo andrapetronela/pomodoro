@@ -16,30 +16,24 @@ class App extends React.Component {
     this.sessionInc = this.sessionInc.bind(this);
     this.sessionDec = this.sessionDec.bind(this);
     }
-    
+    componentDidMount() {
+        this.state.minutes = this.state.session_length;
+    }
     startTimer() {
-            this.state.seconds = 60;
-            this.state.minutes = this.state.session_length;
+        
             this.interval = setInterval(() => {
             this.setState({
                 seconds: this.state.seconds-1,
                 minutes: this.state.session_length-1,
             });
-             
-            document.getElementById('seconds').textContent = this.state.seconds;
+            
+        document.getElementById('seconds').textContent = this.state.seconds;
                 
             console.log(this.state.minutes + ':' + this.state.seconds);
             if (this.state.seconds < 10) {
-                this.setState({
-                    seconds: '0' + this.state.seconds
-                });
+                document.getElementById('seconds').textContent = '0' + this.state.seconds;
             }
                 
-            if (this.state.minutes < 10) {
-                this.setState({
-                    minutes: '0' + this.state.minutes,
-                });
-            } 
             if (this.state.seconds < 10) {
                 console.log('seconds less than 10');
                 this.setState({
@@ -48,25 +42,24 @@ class App extends React.Component {
             }
 
             if (this.state.seconds == 0) {
+                console.log('STOOOOP');
                 this.setState({
-                    seconds: 60, 
                     minutes: this.state.minutes-1,
-                });
-                this.startTimer;
+                })
+                
             }
         }, 1000);
         
-        if (this.state.seconds == 0) {
-            this.startTimer;
-            this.state.session_length -= 1;
-        }
-            
-//        this.minInterval = setInterval(() => {
-//            this.setState({
-//                minutes: this.state.session_length-1
-//            });
-//        }, 60*1000);
+        
+        this.intervalMinutes = setInterval(() => {
+            this.setState({
+                minutes: this.state.session_length-1,
+            })
+        }, 60*1000);
+    
     }
+    
+   
     
 
     stopTimer() {
@@ -111,7 +104,8 @@ class App extends React.Component {
        
         this.setState({
             session_length: this.state.session_length + 1,
-            
+            minutes: this.state.session_length+1,
+            seconds: this.state.seconds
         });
         if (this.state.session_length === 60) {
             this.setState({
@@ -123,7 +117,7 @@ class App extends React.Component {
     sessionDec() {
             this.setState({
             session_length: this.state.session_length - 1,
-            minutes: this.state.session_length,
+            minutes: this.state.session_length-1,
         })
         if (this.state.session_length === 1) {
             this.setState({
