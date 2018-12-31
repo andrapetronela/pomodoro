@@ -44,7 +44,6 @@ class App extends React.Component {
             }
 
             if (this.state.seconds == 0 && this.state.minutes!==0) {
-                console.log('STOOOOP');
                 this.state.minutes--;
                 this.state.seconds = 60;
             }
@@ -52,14 +51,17 @@ class App extends React.Component {
                 
             if (this.state.minutes == 0 && this.state.seconds == 0) {
                 document.getElementById('break-begun').textContent = 'Break has begun';
-                this.state.minutes = this.state.break_length;
+                this.state.minutes = this.state.break_length-1;
                 
                 this.setState({
                     break_session: true,
                     seconds: 60,
-                    minutes: this.state.minutes-1, 
                 });
             }
+                
+            if (this.state.minutes == 0 && this.state.seconds == 0 && this.state.break_session == true) {
+                    console.log('finish');
+                }
         }, 1000);  
     }      
 
@@ -73,6 +75,11 @@ class App extends React.Component {
             break_length: 5,
             session_length: 25,
         });
+        if (this.state.start == true) {
+            this.setState({
+                start: false,
+            })
+        }
         
     }
     // break length
