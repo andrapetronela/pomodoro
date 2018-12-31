@@ -7,6 +7,7 @@ class App extends React.Component {
             minutes: 25,
             seconds: 60,
             initialSeconds: 0,
+            break_session: false,
         }
         
     this.startTimer = this.startTimer.bind(this);
@@ -16,15 +17,12 @@ class App extends React.Component {
     this.sessionInc = this.sessionInc.bind(this);
     this.sessionDec = this.sessionDec.bind(this);
     }
-    componentDidMount() {
-        this.state.minutes = this.state.session_length;
-    }
+
     startTimer() {
-        
+            this.state.minutes = this.state.session_length-1;
             this.interval = setInterval(() => {
             this.setState({
                 seconds: this.state.seconds-1,
-                minutes: this.state.session_length-1,
             });
             
         document.getElementById('seconds').textContent = this.state.seconds;
@@ -41,32 +39,36 @@ class App extends React.Component {
                 })
             }
 
-            if (this.state.seconds == 0) {
+            if (this.state.seconds == 0 && this.state.minutes!==0) {
                 console.log('STOOOOP');
-                this.setState({
-                    minutes: this.state.minutes-1,
-                })
-                
+                this.state.minutes--;
+                this.state.seconds = 60;
             }
-        }, 1000);
-        
-        
-        this.intervalMinutes = setInterval(() => {
-            this.setState({
-                minutes: this.state.session_length-1,
-            })
-        }, 60*1000);
-    
-    }
-    
-   
-    
+              
+            if (this.state.session_length < 10) {
+                this.setState({
+                    minutes: '0'+this.state.session_length-1,
+                })
+            }
+          
+                
+            if (this.state.minutes == 0 && this.state.seconds == 0) {
+                document.getElementById('break-begun').textContent = 'Break has begun';
+           
+                this.setState({
+                    break_session: true,
+                    minutes: this.state.break_length-1,
+                    seconds: 60
+                });
+            }
+        }, 1000);    
+    }      
 
     stopTimer() {
-       document.getElementById('seconds').textContent = '0' + this.state.initialSeconds;
+        document.getElementById('seconds').textContent = '0'+ this.state.initialSeconds;
         clearInterval(this.interval);
         this.setState({
-            seconds: '0' + this.state.initialSeconds,
+            seconds: 60,
             minutes: 25,
             break_length: 5,
             session_length: 25,
@@ -118,6 +120,7 @@ class App extends React.Component {
             this.setState({
             session_length: this.state.session_length - 1,
             minutes: this.state.session_length-1,
+            seconds: this.state.seconds
         })
         if (this.state.session_length === 1) {
             this.setState({
@@ -151,6 +154,7 @@ class App extends React.Component {
                     </div>
                     <button id="start_stop" onClick={this.startTimer}>Play</button>
                     <button id="reset" onClick={this.stopTimer}>Reset</button>
+                    <div id='break-begun'></div>
                 </div>
             </div>
         )
