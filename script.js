@@ -46,9 +46,8 @@ class App extends React.Component {
             if (this.state.seconds == 0 && this.state.minutes == 0) {
                 this.setState({
                     break_session: true,
-                    minutes: this.state.break_length,
                 });
-                
+                this.state.minutes = this.state.break_length;
                 this.state.minutes--;
                 this.state.seconds = 60;
             }
