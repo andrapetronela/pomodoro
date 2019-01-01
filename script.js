@@ -28,16 +28,10 @@ class App extends React.Component {
                 seconds: this.state.seconds-1,
                 start: true,
             });
-            
-//        document.getElementById('seconds').textContent = this.state.seconds;
-                
+                            
             console.log(this.state.minutes + ':' + this.state.seconds);
-            if (this.state.seconds < 10) {
-//                document.getElementById('seconds').textContent = '0' + this.state.seconds;
-            }
                 
             if (this.state.seconds < 10) {
-                console.log('seconds less than 10');
                 this.setState({
                     seconds: '0' + this.state.seconds,
                 })
@@ -67,7 +61,7 @@ class App extends React.Component {
 
    
     stopTimer() {
-//        document.getElementById('seconds').textContent = '0'+ this.state.initialSeconds;
+
         clearInterval(this.interval);
         this.setState({
             seconds: 60,
@@ -174,7 +168,7 @@ class App extends React.Component {
                         
                         <p id="time-left">
                             {this.state.minutes < 10 ? '0' + this.state.minutes + ':' : this.state.minutes+':'}
-                            {this.state.start == false ? '0' + this.state.initialSeconds : this.state.seconds}
+                            {this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds}
                         </p>
                     </div>
                     <button id="start_stop" onClick={this.state.start===false ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
