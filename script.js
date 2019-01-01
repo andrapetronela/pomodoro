@@ -168,8 +168,9 @@ class App extends React.Component {
                     <button id="session-decrement" onClick={this.sessionDec}>Down</button>
                 </div>
                 <div id="timer-label">
+                    {this.state.break_session == false ? 'Sesssssion' : 'Break has begun'}
                     <div id="timer-title">
-                        <p id="session">{this.state.break_session == false ? 'Sesssssion' : 'Break has begun'}</p>
+                        
                         <p id="time-left">
                             <span id="minutes">{this.state.minutes < 10 ? '0' + this.state.minutes + ':' : this.state.minutes+':'}</span>
                             <span id="seconds">{'0' + this.state.initialSeconds}</span>
