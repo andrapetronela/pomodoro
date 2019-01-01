@@ -50,7 +50,7 @@ class App extends React.Component {
            
                 
             if (this.state.minutes == 0 && this.state.seconds == 0) {
-                document.getElementById('break-begun').textContent = 'Break has begun';
+             
                 this.state.minutes = this.state.break_length-1;
                 
                 this.setState({
@@ -169,7 +169,7 @@ class App extends React.Component {
                 </div>
                 <div id="timer-label">
                     <div id="timer-title">
-                        <p>Session</p>
+                        <p id="session">{this.state.break_session == false ? 'Sesssssion' : 'Break has begun'}</p>
                         <p id="time-left">
                             <span id="minutes">{this.state.minutes < 10 ? '0' + this.state.minutes + ':' : this.state.minutes+':'}</span>
                             <span id="seconds">{'0' + this.state.initialSeconds}</span>
@@ -177,7 +177,6 @@ class App extends React.Component {
                     </div>
                     <button id="start_stop" onClick={this.state.start===false ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
                     <button id="reset" onClick={this.stopTimer}>Reset</button>
-                    <div id='break-begun'></div>
                 </div>
             </div>
         )
