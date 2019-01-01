@@ -45,19 +45,26 @@ class App extends React.Component {
             } 
                 
                 
-            if (this.state.seconds < 1 && this.state.minutes == 0) {
-               document.getElementById('beep').play();
+            if (this.state.seconds == 0 && this.state.minutes == 0 && this.state.session_begun == true) {
+                document.getElementById('beep').play();
+              
                 this.setState({
+                    seconds: this.state.seconds,
                     minutes: this.state.minutes,
                     break_session: true,
+                    session_begun: false,
                 });
+
                 this.state.minutes = this.state.break_length;
-                this.state.minutes--;
                 this.state.seconds = 60;
+            } else if (this.state.seconds == 0 && this.state.minutes == 0 && this.state.session_begun == 'false') {
+                this.setState({
+                    minutes: this.state.session_length,
+                })
             }
-        }, 1000);  
-    }     
-  
+                
+        }, 1000); 
+    }  
    
     reset() {
 
