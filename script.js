@@ -9,6 +9,7 @@ class App extends React.Component {
             initialSeconds: 0,
             break_session: false,
             start: false,
+            session_begun: false,
         }
         
     this.startTimer = this.startTimer.bind(this);
@@ -27,6 +28,7 @@ class App extends React.Component {
             this.setState({
                 seconds: this.state.seconds-1,
                 start: true,
+                session_begun: true,
             });
                             
             console.log(this.state.minutes + ':' + this.state.seconds);
@@ -69,6 +71,7 @@ class App extends React.Component {
             break_length: 5,
             session_length: 25,
             break_session: false,
+            session_begun: false,
         });
         if (this.state.start == true) {
             this.setState({
@@ -168,7 +171,7 @@ class App extends React.Component {
                         
                         <p id="time-left">
                             {this.state.minutes < 10 ? '0' + this.state.minutes + ':' : this.state.minutes+':'}
-                            {this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds}
+                            {this.state.session_begun == false ? '0' + this.state.initialSeconds : this.state.seconds}
                         </p>
                     </div>
                     <button id="start_stop" onClick={this.state.start===false ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
