@@ -42,17 +42,15 @@ class App extends React.Component {
             if (this.state.seconds == 0 && this.state.minutes!==0) {
                 this.state.minutes--;
                 this.state.seconds = 60;
-            }
-           
-                
-            if (this.state.minutes == 0 && this.state.seconds == 0) {
-             
-                this.state.minutes = this.state.break_length-1;
-                
+            } 
+            if (this.state.seconds == 0 && this.state.minutes == 0) {
                 this.setState({
                     break_session: true,
-                    seconds: 60,
+                    minutes: this.state.break_length,
                 });
+                
+                this.state.minutes--;
+                this.state.seconds = 60;
             }
                 
             if (this.state.minutes == 0 && this.state.seconds == 0 && this.state.break_session == true) {
