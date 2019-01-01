@@ -45,12 +45,11 @@ class App extends React.Component {
             } 
                 
                 
-            if (this.state.seconds == 0 && this.state.minutes == 0) {
-                console.log('Finish');
-                document.getElementById('beep').play();
-                this.state.break_session = true;
+            if (this.state.seconds < 1 && this.state.minutes == 0) {
+               document.getElementById('beep').play();
                 this.setState({
-                    seconds: this.state.seconds,
+                    minutes: this.state.minutes,
+                    break_session: true,
                 });
                 this.state.minutes = this.state.break_length;
                 this.state.minutes--;
