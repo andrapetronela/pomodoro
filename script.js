@@ -46,7 +46,8 @@ class App extends React.Component {
                 
                 
             if (this.state.seconds == 0 && this.state.minutes == 0) {
-                
+                console.log('Finish');
+                document.getElementById('beep').play();
                 this.state.break_session = true;
                 this.setState({
                     seconds: this.state.seconds,
@@ -55,13 +56,9 @@ class App extends React.Component {
                 this.state.minutes--;
                 this.state.seconds = 60;
             }
-                
-            if (this.state.minutes == 0 && this.state.seconds == 0 && this.state.break_session == true) {
-                    console.log('finish');
-                }
         }, 1000);  
-    }      
-
+    }     
+  
    
     reset() {
 
@@ -79,7 +76,8 @@ class App extends React.Component {
                 start: false,
             })
         }
-        
+        document.getElementById('beep').pause();
+        document.getElementById('beep').currentTime = 0;
     }
     // break length
     breakInc() {
@@ -178,6 +176,9 @@ class App extends React.Component {
                     <button id="start_stop" onClick={this.state.start===false ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
                     <button id="reset" onClick={this.reset}>Reset</button>
                 </div>
+            <div id="sound">
+                <audio id="beep" src="2sec.mp3" />
+            </div>
             </div>
         )
     }
