@@ -29,11 +29,11 @@ class App extends React.Component {
                 start: true,
             });
             
-        document.getElementById('seconds').textContent = this.state.seconds;
+//        document.getElementById('seconds').textContent = this.state.seconds;
                 
             console.log(this.state.minutes + ':' + this.state.seconds);
             if (this.state.seconds < 10) {
-                document.getElementById('seconds').textContent = '0' + this.state.seconds;
+//                document.getElementById('seconds').textContent = '0' + this.state.seconds;
             }
                 
             if (this.state.seconds < 10) {
@@ -67,13 +67,14 @@ class App extends React.Component {
 
    
     stopTimer() {
-        document.getElementById('seconds').textContent = '0'+ this.state.initialSeconds;
+//        document.getElementById('seconds').textContent = '0'+ this.state.initialSeconds;
         clearInterval(this.interval);
         this.setState({
             seconds: 60,
             minutes: 25,
             break_length: 5,
             session_length: 25,
+            break_session: false,
         });
         if (this.state.start == true) {
             this.setState({
@@ -168,12 +169,12 @@ class App extends React.Component {
                     <button id="session-decrement" onClick={this.sessionDec}>Down</button>
                 </div>
                 <div id="timer-label">
-                    {this.state.break_session == false ? 'Sesssssion' : 'Break has begun'}
+                    {this.state.break_session == false ? 'Session' : 'Break has begun'}
                     <div id="timer-title">
                         
                         <p id="time-left">
-                            <span id="minutes">{this.state.minutes < 10 ? '0' + this.state.minutes + ':' : this.state.minutes+':'}</span>
-                            <span id="seconds">{'0' + this.state.initialSeconds}</span>
+                            {this.state.minutes < 10 ? '0' + this.state.minutes + ':' : this.state.minutes+':'}
+                            {this.state.start == false ? '0' + this.state.initialSeconds : this.state.seconds}
                         </p>
                     </div>
                     <button id="start_stop" onClick={this.state.start===false ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
