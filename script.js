@@ -13,7 +13,7 @@ class App extends React.Component {
         }
         
     this.startTimer = this.startTimer.bind(this);
-    this.stopTimer = this.stopTimer.bind(this);
+    this.reset = this.reset.bind(this);
     this.breakInc = this.breakInc.bind(this);
     this.breakDec = this.breakDec.bind(this);
     this.sessionInc = this.sessionInc.bind(this);
@@ -43,9 +43,13 @@ class App extends React.Component {
                 this.state.minutes--;
                 this.state.seconds = 60;
             } 
+                
+                
             if (this.state.seconds == 0 && this.state.minutes == 0) {
+                
+                this.state.break_session = true;
                 this.setState({
-                    break_session: true,
+                    seconds: this.state.seconds,
                 });
                 this.state.minutes = this.state.break_length;
                 this.state.minutes--;
@@ -59,7 +63,7 @@ class App extends React.Component {
     }      
 
    
-    stopTimer() {
+    reset() {
 
         clearInterval(this.interval);
         this.setState({
@@ -172,7 +176,7 @@ class App extends React.Component {
                         </p>
                     </div>
                     <button id="start_stop" onClick={this.state.start===false ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
-                    <button id="reset" onClick={this.stopTimer}>Reset</button>
+                    <button id="reset" onClick={this.reset}>Reset</button>
                 </div>
             </div>
         )
