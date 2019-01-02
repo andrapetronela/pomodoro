@@ -171,7 +171,7 @@ class App extends React.Component {
                     <button id="session-decrement" onClick={this.sessionDec}>Down</button>
                 </div>
                 <div id="timer-label">
-                    {this.state.break_session == false ? 'Session' : 'Break has begun'}
+                    {!this.state.break_session ? 'Session' : 'Break has begun'}
                     <div id="timer-title">
                         
                         <p id="time-left">
