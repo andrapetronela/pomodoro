@@ -176,10 +176,10 @@ class App extends React.Component {
                         
                         <p id="time-left">
                             {this.state.minutes < 10 ? '0' + this.state.minutes + ':' : this.state.minutes+':'}
-                            {this.state.session_begun == false ? '0' + this.state.initialSeconds : this.state.seconds}
+                            {!this.state.session_begun ? '0' + this.state.initialSeconds : this.state.seconds}
                         </p>
                     </div>
-                    <button id="start_stop" onClick={this.state.start===false ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
+                    <button id="start_stop" onClick={!this.state.start ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
                     <button id="reset" onClick={this.reset}>Reset</button>
                 </div>
             <div id="sound">
