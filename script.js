@@ -97,6 +97,8 @@ class App extends React.Component {
                                 break_session: false,
                             });
                             this.startTimer();
+                            this.state.minutes = this.state.session_length;
+                            this.state.seconds = 60;
                         }
                     }, 1000);
                 
