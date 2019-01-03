@@ -48,8 +48,9 @@ class App extends React.Component {
                 
                 
             if (this.state.seconds == 0 && this.state.minutes == 0 && this.state.session_time) {
+                
                 document.getElementById('beep').play();
-                window.clearInterval(this.interval);
+                clearInterval(this.interval);
                 this.setState({
                     minutes: this.state.minutes,
                     seconds: this.state.seconds,
@@ -61,7 +62,7 @@ class App extends React.Component {
                 let minInterval = setTimeout(() => {
                     this.setState({
                         minutes: this.state.break_length,
-                     
+                        
                     })
                 }, 1000);
                
@@ -72,7 +73,6 @@ class App extends React.Component {
                     });
                 }, 2000);
                 
-//                clearInterval(this.interval);
                     this.breakTime = setInterval(() => {
                         
                         this.setState({
@@ -91,29 +91,29 @@ class App extends React.Component {
                         }
                         
                         if (this.state.minutes == 0 && this.state.seconds == 0 && !this.state.session_time) {
-                    window.clearInterval(this.breakTime);
+                        window.clearInterval(this.breakTime);
                             this.setState({
                                 session_time: true,
                                 break_session: false,
                             });
+           
+                            let minInterval = setTimeout(() => {
+                                this.setState({
+                                    minutes: this.state.session_length,
+                                    seconds: this.state.seconds,
+                                })
+                            }, 1000);
+
+                            let finalTime = setTimeout(() => {
+                                this.setState({
+                                    minutes: this.state.minutes-1,
+                                    seconds: 60,
+                                });
+                            }, 2000);
                             this.startTimer();
-                            this.state.minutes = this.state.session_length;
-                            this.state.seconds = 60;
                         }
                     }, 1000);
-                
-                
-            }
-            
-//            if (this.state.minutes == 0 && this.state.seconds == 0 && this.state.break_session) {
-//                 console.log('break finish');
-//                 this.setState({
-//                     session_begun: true,
-//                     break_session: false,
-//                     minutes: this.state.session_length,
-//                 })
-//            }
-                
+            }                
         }, 1000); 
     }  
    
