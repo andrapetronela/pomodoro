@@ -107,7 +107,7 @@ class App extends React.Component {
     }  
    
     reset = () => {
-
+        this.state.seconds = '0' + this.state.initialSeconds;
         window.clearInterval(this.interval);
         window.clearInterval(this.breakTime);
         this.setState({
@@ -118,6 +118,7 @@ class App extends React.Component {
             break_session: false,
             session_begun: false,
         });
+        
         if (this.state.start) {
             this.setState({
                 start: false,
@@ -228,7 +229,7 @@ class App extends React.Component {
                             {!this.state.session_begun ? '0' + this.state.initialSeconds : this.state.seconds}
                         </p>
                     </div>
-                    <div id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? 'Stop' : <i className="far fa-play-circle play"></i>}</div>
+                    <div id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? <i className="far fa-pause-circle pause"></i> : <i className="far fa-play-circle play"></i>}</div>
                     <button id="reset" onClick={this.reset}>Reset</button>
                 </div>
             <div id="sound">
