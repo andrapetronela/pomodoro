@@ -239,7 +239,7 @@ class App extends React.Component {
                     <button id="reset" onClick={this.reset}>Reset</button>
                 </div>
             <div id="sound">
-                <audio id="beep" src="2sec.mp3" />
+                <audio id="beep" src="http://www.talkingwav.com/wp-content/uploads/2017/10/m16.wav" />
             </div>
             </div>
         )
