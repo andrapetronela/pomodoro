@@ -20,6 +20,7 @@ class App extends React.Component {
     this.sessionInc = this.sessionInc.bind(this);
     this.sessionDec = this.sessionDec.bind(this);
     this.pause = this.pause.bind(this);
+    this.stopSound = this.stopSound.bind(this);
     }
     
     startTimer() {
@@ -32,9 +33,7 @@ class App extends React.Component {
                 session_begun: true,
                 session_time: true,
             });
-                            
-            console.log(this.state.minutes + ':' + this.state.seconds);
-                
+                                            
             if (this.state.seconds < 10) {
                 this.setState({
                     seconds: '0' + this.state.seconds,
@@ -45,7 +44,7 @@ class App extends React.Component {
                 this.state.minutes--;
                 this.state.seconds = 60;
             }
-                
+                          
                 
             if (this.state.seconds == 0 && this.state.minutes == 0 && this.state.session_time) {
                 
@@ -62,8 +61,8 @@ class App extends React.Component {
                 let minInterval = setTimeout(() => {
                     this.setState({
                         minutes: this.state.break_length,
-                        
-                    })
+                    });
+                    
                 }, 1000);
                
                 let finalTime = setTimeout(() => {
@@ -72,13 +71,12 @@ class App extends React.Component {
                         seconds: 60,
                     });
                 }, 2000);
-                
+                    
                     this.breakTime = setInterval(() => {
                         
                         this.setState({
                             seconds: this.state.seconds-1,
                         })
-
                         if (this.state.seconds < 10) {
                             this.setState({
                                 seconds: '0' + this.state.seconds,
@@ -101,7 +99,7 @@ class App extends React.Component {
                                 this.setState({
                                     minutes: this.state.session_length,
                                     seconds: this.state.seconds,
-                                })
+                                });
                             }, 1000);
 
                             let finalTime = setTimeout(() => {
@@ -203,8 +201,13 @@ class App extends React.Component {
         })
         window.clearInterval(this.interval);
         window.clearInterval(this.breakTime);
+        this.stopSound();
     }
     
+    stopSound() {
+        document.getElementById('beep').pause();
+        document.getElementById('beep').currentTime = 0;
+    }
     
         
     render() {
@@ -232,7 +235,7 @@ class App extends React.Component {
                             {!this.state.session_begun ? '0' + this.state.initialSeconds : this.state.seconds}
                         </p>
                     </div>
-                    <button id="start_stop" onClick={!this.state.start ?       this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
+                    <button id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
                     <button id="reset" onClick={this.reset}>Reset</button>
                 </div>
             <div id="sound">
