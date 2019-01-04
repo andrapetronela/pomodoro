@@ -11,6 +11,7 @@ class App extends React.Component {
             start: false,
             session_begun: false,
             session_time: false,
+            menu: !true,
         }
         
     this.startTimer = this.startTimer.bind(this);
@@ -21,6 +22,7 @@ class App extends React.Component {
     this.sessionDec = this.sessionDec.bind(this);
     this.pause = this.pause.bind(this);
     this.stopSound = this.stopSound.bind(this);
+    this.showMenu = this.showMenu.bind(this);
     }
     
     startTimer = () => {
@@ -201,24 +203,34 @@ class App extends React.Component {
         document.getElementById('beep').currentTime = 0;
     }
     
+    showMenu = () => {
+        
+        this.setState({
+            menu: true,
+        });
+        this.state.menu ? document.getElementById('controls').style.opacity = '1' : document.getElementById('controls').style.opacity = '0';
+    }
+    
         
     render () {
         return (
             <div id="container">
-                <div id="menu"><i className="fas fa-bars arrow"></i></div>
+                <div id="menu"><i className="fas fa-bars arrow" onClick={this.showMenu}></i></div>
                 <h1>Pomodoro timer</h1> 
-                <div id="break-label">
-                    <p id="break-title">Break Length</p>
-                    <div id="break-increment" onClick={this.breakInc}><i className="fas fa-arrow-up arrow"></i></div>
-                    <p id="break-length">{this.state.break_length}</p>
-                    <div id="break-decrement" onClick={this.breakDec}><i className="fas fa-arrow-down arrow"></i></div>
-                </div>
-                <div id="session-label">
-                    <p id="session-title">Session Length</p>
-                    <div id="session-increment" onClick={this.sessionInc}><i className="fas fa-arrow-up arrow"></i></div>
-                    <p id="session-length">{
-                    this.state.session_length }</p>
-                    <div id="session-decrement" onClick={this.sessionDec}><i className="fas fa-arrow-down arrow"></i></div>
+                <div id="controls">
+                    <div id="break-label">
+                        <p id="break-title">Break Length</p>
+                        <div id="break-increment" onClick={this.breakInc}><i className="fas fa-arrow-up arrow"></i></div>
+                        <p id="break-length">{this.state.break_length}</p>
+                        <div id="break-decrement" onClick={this.breakDec}><i className="fas fa-arrow-down arrow"></i></div>
+                    </div>
+                    <div id="session-label">
+                        <p id="session-title">Session Length</p>
+                        <div id="session-increment" onClick={this.sessionInc}><i className="fas fa-arrow-up arrow"></i></div>
+                        <p id="session-length">{
+                        this.state.session_length }</p>
+                        <div id="session-decrement" onClick={this.sessionDec}><i className="fas fa-arrow-down arrow"></i></div>
+                    </div>
                 </div>
                 <div id="timer-label">
                     {!this.state.break_session ? 'Session' : 'Break has begun'}

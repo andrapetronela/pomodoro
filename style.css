@@ -35,28 +35,26 @@ h1 {
     letter-spacing: 3px;
 }
 
+#controls {
+    position: absolute;
+    top: 5rem;
+    right: 1rem;
+    transition: all .3s;
+}
+
 #break-label, #session-label {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     text-align: center;
 }
 
-#break-label {
-    grid-column: 6 / 8;
-}
 
-#break-title {
-    grid-column: 1 / -1;
-}
-
-#session-label {
-    grid-column: 6 / 8;
-}
-
+#break-title,
 #session-title {
     grid-column: 1 / -1;
-    margin-top: 2rem;
+    margin: 1rem 0;
 }
+
 
 #timer-label {
     grid-column: 2 / 6;
