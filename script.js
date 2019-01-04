@@ -230,7 +230,8 @@ class App extends React.Component {
                         </p>
                     </div>
                     <div id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? <i className="far fa-pause-circle pause"></i> : <i className="far fa-play-circle play"></i>}</div>
-                    <button id="reset" onClick={this.reset}>Reset</button>
+                    <div id="reset" onClick={this.reset}><i className="fas fa-power-off reset"></i>
+                    <div id="hidden-reset">Reset</div></div>
                 </div>
             <div id="sound">
                 <audio id="beep" src="http://www.talkingwav.com/wp-content/uploads/2017/10/m16.wav" />

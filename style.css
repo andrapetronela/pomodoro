@@ -7,7 +7,7 @@
 body {
     background: #000;
     color: #fff;
-    font-family: 'Playfair Display';
+    font-family: Lato;
 }
 
 #container {
@@ -29,7 +29,6 @@ h1 {
     grid-column: 1/ -1;
     margin: 4rem 0;
     color: #f0002f;
-    font-family: Lato;
     font-weight: 800;
     font-size: 3rem;
     text-transform: uppercase;
@@ -69,7 +68,6 @@ h1 {
     margin: 2rem;
     font-size: 5rem;
     color: #f0002f;
-    font-family: Lato;
 }
 
 .arrow {
@@ -78,12 +76,32 @@ h1 {
     cursor: pointer;
 }
 
-.play, .pause {
+.play, 
+.pause, 
+.reset {
     color: #fff;
     font-size: 2rem;
     cursor: pointer;
 }
 
+.reset {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    color: #f0002f;
+}
+
+#hidden-reset {
+    position: absolute;
+    top: 2.5rem;
+    left: 4.5rem;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.reset:hover + #hidden-reset {
+    opacity: 1;
+}
 
 
 
