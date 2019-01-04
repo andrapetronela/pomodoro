@@ -204,19 +204,20 @@ class App extends React.Component {
     render () {
         return (
             <div id="container">
-                <h1>Pomodoro timer</h1>
+                <div id="menu"><i className="fas fa-bars arrow"></i></div>
+                <h1>Pomodoro timer</h1> 
                 <div id="break-label">
                     <p id="break-title">Break Length</p>
-                    <button id="break-increment" onClick={this.breakInc}>Up</button>
+                    <div id="break-increment" onClick={this.breakInc}><i className="fas fa-arrow-up arrow"></i></div>
                     <p id="break-length">{this.state.break_length}</p>
-                    <button id="break-decrement" onClick={this.breakDec}>Down</button>
+                    <div id="break-decrement" onClick={this.breakDec}><i className="fas fa-arrow-down arrow"></i></div>
                 </div>
                 <div id="session-label">
                     <p id="session-title">Session Length</p>
-                    <button id="session-increment" onClick={this.sessionInc}>Up</button>
+                    <div id="session-increment" onClick={this.sessionInc}><i className="fas fa-arrow-up arrow"></i></div>
                     <p id="session-length">{
                     this.state.session_length }</p>
-                    <button id="session-decrement" onClick={this.sessionDec}>Down</button>
+                    <div id="session-decrement" onClick={this.sessionDec}><i className="fas fa-arrow-down arrow"></i></div>
                 </div>
                 <div id="timer-label">
                     {!this.state.break_session ? 'Session' : 'Break has begun'}

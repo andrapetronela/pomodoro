@@ -18,6 +18,12 @@ body {
     grid-template-columns: repeat(3, 1fr);
 }
 
+#menu {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
 h1 {
     text-align: center;
     grid-column: 1/ -1;
@@ -60,6 +66,15 @@ h1 {
 #time-left {
     display: inline-flex;
     margin: 2rem;
+    font-size: 5rem;
+    color: #f0002f;
+    font-family: Lato;
+}
+
+.arrow {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 
