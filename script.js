@@ -23,7 +23,7 @@ class App extends React.Component {
     this.stopSound = this.stopSound.bind(this);
     }
     
-    startTimer() {
+    startTimer = () => {
             this.state.minutes = this.state.session_length-1;
         
             this.interval = setInterval(() => {
@@ -34,19 +34,13 @@ class App extends React.Component {
                 session_time: true,
             });
                                             
-            if (this.state.seconds < 10) {
-                this.setState({
-                    seconds: '0' + this.state.seconds,
-                })
-            }
+            this.state.seconds < 10 ? this.setState({seconds: '0' + this.state.seconds}) : this.state.seconds;
+            
 
             if (this.state.seconds == 0 && this.state.minutes!==0) {
                 this.state.minutes--;
                 this.state.seconds = 60;
-            }
-                          
-                
-            if (this.state.seconds == 0 && this.state.minutes == 0 && this.state.session_time) {
+            } else if (this.state.seconds == 0 && this.state.minutes == 0 && this.state.session_time) {
                 
                 document.getElementById('beep').play();
                 clearInterval(this.interval);
@@ -57,6 +51,7 @@ class App extends React.Component {
                     session_time: false,
                 });
                 
+                // start break interval
                 
                 let minInterval = setTimeout(() => {
                     this.setState({
@@ -77,18 +72,14 @@ class App extends React.Component {
                         this.setState({
                             seconds: this.state.seconds-1,
                         })
-                        if (this.state.seconds < 10) {
-                            this.setState({
-                                seconds: '0' + this.state.seconds,
-                            })
-                        }
+                        this.state.seconds < 10 ? this.setState({seconds: '0' + this.state.seconds}) : this.state.seconds;
 
                         if (this.state.seconds == 0 && this.state.minutes!==0) {
                             this.state.minutes--;
                             this.state.seconds = 60;
                         }
                         
-                        if (this.state.minutes == 0 && this.state.seconds == 0 && !this.state.session_time) {
+                        if (this.state.minutes === 0 && this.state.seconds == 0 && !this.state.session_time) {
                         window.clearInterval(this.breakTime);
                             this.setState({
                                 session_time: true,
@@ -115,7 +106,7 @@ class App extends React.Component {
         }, 1000); 
     }  
    
-    reset() {
+    reset = () => {
 
         window.clearInterval(this.interval);
         window.clearInterval(this.breakTime);
@@ -127,7 +118,7 @@ class App extends React.Component {
             break_session: false,
             session_begun: false,
         });
-        if (this.state.start == true) {
+        if (this.state.start) {
             this.setState({
                 start: false,
             })
@@ -136,7 +127,7 @@ class App extends React.Component {
         document.getElementById('beep').currentTime = 0;
     }
     // break length
-    breakInc() {
+    breakInc = () => {
         this.setState({
             break_length: this.state.break_length + 1
         })
@@ -148,10 +139,10 @@ class App extends React.Component {
         }
     }
     
-    breakDec() {
+    breakDec = () => {
             this.setState({
             break_length: this.state.break_length - 1
-        })
+            })
         if (this.state.break_length === 1) {
             this.setState({
                 break_length: 1
@@ -162,14 +153,14 @@ class App extends React.Component {
     
     // session length
     
-    sessionInc() {
+    sessionInc = () => {
        
         this.setState({
             session_length: this.state.session_length + 1,
             minutes: this.state.session_length+1,
             seconds: this.state.seconds
         });
-        if (this.state.session_length == 60) {
+        if (this.state.session_length === 60) {
             this.setState({
                 session_length: 60,
                 minutes: 60,
@@ -177,13 +168,13 @@ class App extends React.Component {
         }
     }
     
-    sessionDec() {
+    sessionDec = () => {
         this.setState({
             session_length: this.state.session_length - 1,
             minutes: this.state.session_length-1,
             seconds: this.state.seconds
         })
-        if (this.state.session_length == 1) {
+        if (this.state.session_length === 1) {
             this.setState({
                 session_length: 1,
                 minutes: 1,
@@ -191,7 +182,7 @@ class App extends React.Component {
         }
     }
     
-    pause() {
+    pause = () => {
         this.setState({
             start: false,
             minutes: this.state.minutes,
@@ -204,13 +195,13 @@ class App extends React.Component {
         this.stopSound();
     }
     
-    stopSound() {
+    stopSound = () => {
         document.getElementById('beep').pause();
         document.getElementById('beep').currentTime = 0;
     }
     
         
-    render() {
+    render () {
         return (
             <div id="container">
                 <div id="break-label">
