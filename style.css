@@ -5,7 +5,9 @@
 }
 
 body {
-    background: #a5a5a5;
+    background: #000;
+    color: #fff;
+    font-family: 'Playfair Display SC';
 }
 
 #container {
@@ -14,6 +16,13 @@ body {
     margin-top: 7rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+h1 {
+    text-align: center;
+    grid-column: 2/3;
+    margin: -2rem 0 4rem;
+    color: #f0002f;
 }
 
 #break-label, #session-label {

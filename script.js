@@ -204,6 +204,7 @@ class App extends React.Component {
     render () {
         return (
             <div id="container">
+                <h1>Pomodoro timer</h1>
                 <div id="break-label">
                     <p id="break-title">Break Length</p>
                     <button id="break-increment" onClick={this.breakInc}>Up</button>
