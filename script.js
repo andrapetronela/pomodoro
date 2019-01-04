@@ -228,7 +228,7 @@ class App extends React.Component {
                             {!this.state.session_begun ? '0' + this.state.initialSeconds : this.state.seconds}
                         </p>
                     </div>
-                    <button id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? 'Stop' : 'Play'}</button>
+                    <div id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? 'Stop' : <i className="far fa-play-circle play"></i>}</div>
                     <button id="reset" onClick={this.reset}>Reset</button>
                 </div>
             <div id="sound">
