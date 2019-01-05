@@ -40,7 +40,7 @@ h1 {
     position: absolute;
     top: 0;
     padding: 5rem;
-    right: 0;
+    right: -15rem;
     opacity: 0;
     height: 100vh;
     background: #f0002f;

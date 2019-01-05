@@ -209,11 +209,13 @@ class App extends React.Component {
            this.setState({
                menu: false,
            }); document.getElementById('controls').style.opacity = '0';
+            document.getElementById('controls').style.right = '-15rem';
          document.getElementById('controls').style.transform = 'scaleX(0)';
         } else {
            this.setState({
                menu: true,
-           });  document.getElementById('controls').style.opacity = '1';  document.getElementById('controls').style.transform = 'scaleX(1)';
+           });  document.getElementById('controls').style.opacity = '1';
+            document.getElementById('controls').style.right = '0';  document.getElementById('controls').style.transform = 'scaleX(1)';
         }
     }
     
