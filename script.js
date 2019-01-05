@@ -260,7 +260,7 @@ class App extends React.Component {
                     <div id="buttons">
                         <div id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? <i className="far fa-pause-circle pause"></i> : <i className="far fa-play-circle play"></i>}</div>
                         <div id="reset" onClick={this.reset}><i className="fas fa-power-off reset"></i>
-                        <div id="hidden-reset">Reset</div></div>
+                        </div>
                     </div>
                 </div>
             <div id="sound">
