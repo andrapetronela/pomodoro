@@ -83,6 +83,7 @@ class App extends React.Component {
                         
                         if (this.state.minutes === 0 && this.state.seconds == 0 && !this.state.session_time) {
                         window.clearInterval(this.breakTime);
+                        
                             this.setState({
                                 session_time: true,
                                 break_session: false,

@@ -9,6 +9,8 @@ body {
     color: #fff;
     font-family: Lato;
     overflow-x: hidden;
+    height: 100vh;
+    cursor: -webkit-image-set(url(https://dl.dropboxusercontent.com/s/xmby7tz86hsy98z/normal.png) 1x, url(https://dl.dropboxusercontent.com/s/mm6qf8whdhl1mcp/normal2x.png) 2x) 0 0, pointer !important;
 }
 
 #container {
@@ -176,19 +178,4 @@ h1 {
 .reset:hover + #hidden-reset {
     opacity: 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
