@@ -40,6 +40,7 @@ h1 {
     top: 5rem;
     right: 1rem;
     transition: all .3s;
+    opacity: 0;
 }
 
 #break-label, #session-label {
@@ -75,10 +76,9 @@ h1 {
 }
 
 .play, 
-.pause, 
-.reset {
+.pause {
     color: #fff;
-    font-size: 2rem;
+    font-size: 4rem;
     cursor: pointer;
 }
 
@@ -87,6 +87,8 @@ h1 {
     top: 2rem;
     left: 2rem;
     color: #f0002f;
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
 #hidden-reset {
@@ -94,7 +96,7 @@ h1 {
     top: 2.5rem;
     left: 4.5rem;
     opacity: 0;
-    transition: all .3s;
+    transition: all .5s;
 }
 
 .reset:hover + #hidden-reset {

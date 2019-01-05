@@ -11,7 +11,7 @@ class App extends React.Component {
             start: false,
             session_begun: false,
             session_time: false,
-            menu: !true,
+            menu: false,
         }
         
     this.startTimer = this.startTimer.bind(this);
@@ -205,17 +205,24 @@ class App extends React.Component {
     
     showMenu = () => {
         
-        this.setState({
-            menu: true,
-        });
-        this.state.menu ? document.getElementById('controls').style.opacity = '1' : document.getElementById('controls').style.opacity = '0';
+       
+//        this.state.menu ? document.getElementById('controls').style.opacity = '1' : document.getElementById('controls').style.opacity = '0';
+        if (this.state.menu) {
+           this.setState({
+               menu: false,
+           }); document.getElementById('controls').style.opacity = '0';
+        } else {
+           this.setState({
+               menu: true,
+           });  document.getElementById('controls').style.opacity = '1';
+        }
     }
     
         
     render () {
         return (
             <div id="container">
-                <div id="menu"><i className="fas fa-bars arrow" onClick={this.showMenu}></i></div>
+                <div id="menu" onClick={this.showMenu}><i className="fas fa-bars arrow" ></i></div>
                 <h1>Pomodoro timer</h1> 
                 <div id="controls">
                     <div id="break-label">
@@ -233,7 +240,7 @@ class App extends React.Component {
                     </div>
                 </div>
                 <div id="timer-label">
-                    {!this.state.break_session ? 'Session' : 'Break has begun'}
+                    {!this.state.break_session ? 'Choose a job you love and you will never have to work a day in your life.' : 'Break has begun'}
                     <div id="timer-title">
                         
                         <p id="time-left">
