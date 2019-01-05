@@ -8,14 +8,14 @@ body {
     background-color:#000;
     color: #fff;
     font-family: Lato;
-    overflow-x: hidden;
+    overflow: hidden;
     height: 100vh;
     cursor: -webkit-image-set(url(https://dl.dropboxusercontent.com/s/xmby7tz86hsy98z/normal.png) 1x, url(https://dl.dropboxusercontent.com/s/mm6qf8whdhl1mcp/normal2x.png) 2x) 0 0, pointer !important;
 }
 
 #container {
     width: 100vw;
-    margin: auto;
+    margin: 7rem auto 0;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
@@ -60,13 +60,15 @@ body {
 
 h1 {
     text-align: center;
-    grid-column: 1/ -1;
-    margin: 4rem 0;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    position: absolute;
+    top: 5rem;
+    left: 5rem;
     color: #f0002f;
     font-weight: 800;
-    font-size: 3rem;
+    font-size: 3.5rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
 }
 
 #controls {
