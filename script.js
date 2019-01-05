@@ -208,13 +208,13 @@ class App extends React.Component {
         if (this.state.menu) {
            this.setState({
                menu: false,
-           }); document.getElementById('controls').style.opacity = '0';
+           }); 
             document.getElementById('controls').style.right = '-15rem';
          document.getElementById('controls').style.transform = 'scaleX(0)';
         } else {
            this.setState({
                menu: true,
-           });  document.getElementById('controls').style.opacity = '1';
+           }); 
              document.getElementById('controls').style.right = '0rem';
             document.getElementById('controls').style.padding = '5rem'; 
             document.getElementById('controls').style.transform = 'scaleX(1)';
@@ -229,13 +229,13 @@ class App extends React.Component {
                 <h1>Pomodoro timer</h1> 
                 <div id="controls">
                     <div id="break-label">
-                        <p id="break-title">Break Length</p>
+                        <p id="break-title">Break</p>
                         <div id="break-increment" onClick={this.breakInc}><i className="fas fa-arrow-up arrow"></i></div>
                         <p id="break-length">{this.state.break_length}</p>
                         <div id="break-decrement" onClick={this.breakDec}><i className="fas fa-arrow-down arrow"></i></div>
                     </div>
                     <div id="session-label">
-                        <p id="session-title">Session Length</p>
+                        <p id="session-title">Session</p>
                         <div id="session-increment" onClick={this.sessionInc}><i className="fas fa-arrow-up arrow"></i></div>
                         <p id="session-length">{
                         this.state.session_length }</p>

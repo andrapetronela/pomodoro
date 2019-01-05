@@ -39,32 +39,54 @@ h1 {
 #controls {
     position: absolute;
     top: 0;
-/*    padding: 5rem;*/
     right: -5rem;
-/*    opacity: 0;*/
     height: 100vh;
     background: #f0002f;
     transform: scaleX(0);
-    transition: cubic-bezier(1, 0, 0, 1) .7s,
-                    background-color .3s; 
-/*    width: 0;*/
+    transition: cubic-bezier(1, 0, 0, 1) .7s;
 } 
 
 #break-label, #session-label {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.95);
 }
-
 
 #break-title,
 #session-title {
     grid-column: 1 / -1;
     margin: 2rem 0;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Lato';
+}
+
+#break-title::after,
+#session-title::after {
+    content: '';
+    height: 1px;
+    width: 60%;
+    display: block;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 1rem auto 0;
+}
+
+#break-title::before,
+#session-title::before {
+    content: '';
+    height: 1px;
+    width: 60%;
+    display: block;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 0 auto 1rem;
 }
 
 #session-title {
-    margin-top: 5rem;
+    margin-top: 4rem;
 }
 
 #timer-label {
@@ -84,6 +106,10 @@ h1 {
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.arrow {
+    margin: 0 .5rem;
 }
 
 .play, 
