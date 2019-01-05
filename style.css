@@ -8,12 +8,12 @@ body {
     background: #000;
     color: #fff;
     font-family: Lato;
+    overflow: hidden;
 }
 
 #container {
     width: 100vw;
     margin: auto;
-/*    margin-top: 7rem;*/
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
@@ -22,6 +22,7 @@ body {
     position: absolute;
     top: 2rem;
     right: 2rem;
+    z-index: 55;
 }
 
 h1 {
@@ -37,10 +38,14 @@ h1 {
 
 #controls {
     position: absolute;
-    top: 5rem;
-    right: 1rem;
+    top: 0;
+    padding: 5rem;
+    right: 0;
     transition: all .3s;
     opacity: 0;
+    height: 100vh;
+    background: #f0002f;
+    transform: scaleX(0);
 }
 
 #break-label, #session-label {
@@ -69,7 +74,8 @@ h1 {
     color: #f0002f;
 }
 
-.arrow {
+.arrow,
+#menu-icon {
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;

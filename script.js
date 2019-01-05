@@ -204,17 +204,16 @@ class App extends React.Component {
     }
     
     showMenu = () => {
-        
-       
-//        this.state.menu ? document.getElementById('controls').style.opacity = '1' : document.getElementById('controls').style.opacity = '0';
+    
         if (this.state.menu) {
            this.setState({
                menu: false,
            }); document.getElementById('controls').style.opacity = '0';
+         document.getElementById('controls').style.transform = 'scaleX(0)';
         } else {
            this.setState({
                menu: true,
-           });  document.getElementById('controls').style.opacity = '1';
+           });  document.getElementById('controls').style.opacity = '1';  document.getElementById('controls').style.transform = 'scaleX(1)';
         }
     }
     
@@ -222,7 +221,7 @@ class App extends React.Component {
     render () {
         return (
             <div id="container">
-                <div id="menu" onClick={this.showMenu}><i className="fas fa-bars arrow" ></i></div>
+                <div id="menu" onClick={this.showMenu}><i className="fas fa-bars" id="menu-icon" ></i></div>
                 <h1>Pomodoro timer</h1> 
                 <div id="controls">
                     <div id="break-label">
