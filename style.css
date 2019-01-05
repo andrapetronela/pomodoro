@@ -8,7 +8,7 @@ body {
     background: #000;
     color: #fff;
     font-family: Lato;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 #container {
@@ -39,14 +39,15 @@ h1 {
 #controls {
     position: absolute;
     top: 0;
-    padding: 5rem;
-    right: -15rem;
-    opacity: 0;
+/*    padding: 5rem;*/
+    right: -5rem;
+/*    opacity: 0;*/
     height: 100vh;
     background: #f0002f;
     transform: scaleX(0);
-    transition: cubic-bezier(1, 0, 0, 1) .5s,
+    transition: cubic-bezier(1, 0, 0, 1) .7s,
                     background-color .3s; 
+/*    width: 0;*/
 } 
 
 #break-label, #session-label {

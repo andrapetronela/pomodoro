@@ -215,7 +215,9 @@ class App extends React.Component {
            this.setState({
                menu: true,
            });  document.getElementById('controls').style.opacity = '1';
-            document.getElementById('controls').style.right = '0';  document.getElementById('controls').style.transform = 'scaleX(1)';
+             document.getElementById('controls').style.right = '0rem';
+            document.getElementById('controls').style.padding = '5rem'; 
+            document.getElementById('controls').style.transform = 'scaleX(1)';
         }
     }
     
