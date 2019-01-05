@@ -257,9 +257,11 @@ class App extends React.Component {
                             {!this.state.session_begun ? '0' + this.state.initialSeconds : this.state.seconds}
                         </p>
                     </div>
-                    <div id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? <i className="far fa-pause-circle pause"></i> : <i className="far fa-play-circle play"></i>}</div>
-                    <div id="reset" onClick={this.reset}><i className="fas fa-power-off reset"></i>
-                    <div id="hidden-reset">Reset</div></div>
+                    <div id="buttons">
+                        <div id="start_stop" onClick={!this.state.start ? this.startTimer : this.pause}>{this.state.start ? <i className="far fa-pause-circle pause"></i> : <i className="far fa-play-circle play"></i>}</div>
+                        <div id="reset" onClick={this.reset}><i className="fas fa-power-off reset"></i>
+                        <div id="hidden-reset">Reset</div></div>
+                    </div>
                 </div>
             <div id="sound">
                 <audio id="beep" src="http://www.talkingwav.com/wp-content/uploads/2017/10/m16.wav" />

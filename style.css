@@ -15,7 +15,7 @@ body {
 
 #container {
     width: 100vw;
-    margin: 7rem auto 0;
+    margin: 8rem auto 0;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
@@ -32,8 +32,8 @@ body {
     height: 38px;
     border: 5px solid rgba(240, 0, 47, 0.19);
     position: absolute;
-    left: 5rem;
-    top: 50vh;
+    left: 15rem;
+    top: 60vh;
 }
 
 .circle:nth-child(2) {
@@ -149,6 +149,12 @@ h1 {
     margin: 0 .5rem;
 }
 
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .play, 
 .pause {
     color: #fff;
@@ -161,9 +167,7 @@ h1 {
 }
 
 .reset {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
+    margin-left: 3rem;
     color: #f0002f;
     font-size: 1.8rem;
     cursor: pointer;
