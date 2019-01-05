@@ -123,13 +123,15 @@ h1 {
 #timer-label {
     grid-column: 2 / 6;
     text-align: center;
+    font-family: 'Playfair Display';
 }
 
 #time-left {
     display: inline-flex;
     margin: 2rem;
-    font-size: 5rem;
+    font-size: 7rem;
     color: #f0002f;
+    font-family: 'Lato';
 }
 
 .arrow,
@@ -148,6 +150,10 @@ h1 {
     color: #fff;
     font-size: 4rem;
     cursor: pointer;
+}
+
+.pause {
+    color: #f0002f;
 }
 
 .reset {

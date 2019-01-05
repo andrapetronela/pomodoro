@@ -248,7 +248,7 @@ class App extends React.Component {
                     </div>
                 </div>
                 <div id="timer-label">
-                    {!this.state.break_session ? 'Choose a job you love and you will never have to work a day in your life.' : 'Break has begun'}
+                    {!this.state.break_session ? 'Choose a job you love and you will never have to work a day in your life.' : 'Break time'}
                     <div id="timer-title">
                         
                         <p id="time-left">
