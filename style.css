@@ -76,7 +76,7 @@ h1 {
     position: absolute;
     top: 0;
     right: -5rem;
-    height: 100vh;
+    height: 100%;
     background: #f0002f;
     transform: scaleX(0);
     transition: cubic-bezier(1, 0, 0, 1) .7s;
@@ -134,7 +134,7 @@ h1 {
 
 #time-left {
     display: inline-flex;
-    margin: 4rem 0;
+    margin: 4rem auto;
     font-size: 7rem;
     color: #f0002f;
     font-family: 'Lato';
@@ -178,7 +178,6 @@ h1 {
 @media only screen and (max-width: 950px) {
     h1 {
         left: 2rem;
-        transform: translateY(-50%);
     }
     
     .circle:first-of-type {
@@ -208,5 +207,45 @@ h1 {
     
     #controls {
         right: 0;
+    }
+}
+
+@media only screen and (max-height: 650px) {
+    body {
+        overflow-y: auto;
+    }
+    
+    #buttons {
+        margin-bottom: 1rem;
+    }
+    
+    .circle:nth-child(1) {
+        left: 2rem;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #time-left {
+        margin: 4rem auto 3rem;
+        font-size: 5rem;
+    }
+    
+    .circle:nth-child(1) {
+        left: 1rem;
+        top: 50%;
+    }
+    
+    .circle:nth-child(2) {
+        left: 2rem;
+    }
+    .circle:nth-child(3) {
+        right: 1rem;
+        top: 70%;
+    }
+    
+    h1 {
+        padding: 0 2rem;
+        font-size: 2.5rem;
+        margin-top: 1rem;
     }
 }
