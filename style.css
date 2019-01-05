@@ -179,6 +179,20 @@ h1 {
         left: 2rem;
         transform: translateY(-50%);
     }
+    
+    .circle:first-of-type {
+        left: 8rem;
+        top: 60vh;
+    }
+    
+    .circle:nth-child(2) {
+        top: 90vh;
+        left: 30vw;
+    }
+    
+    .circle:nth-child(3) {
+        top: 80vh;
+    }
 }
 
 @media only screen and (max-width: 650px) {
