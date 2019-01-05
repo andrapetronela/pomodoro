@@ -227,6 +227,11 @@ class App extends React.Component {
             <div id="container">
                 <div id="menu" onClick={this.showMenu}><i className="fas fa-bars" id="menu-icon" ></i></div>
                 <h1>Pomodoro timer</h1> 
+                <div id="circle-container">
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                </div>
                 <div id="controls">
                     <div id="break-label">
                         <p id="break-title">Break</p>

@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #000;
+    background-color:#000;
     color: #fff;
     font-family: Lato;
     overflow-x: hidden;
@@ -16,6 +16,37 @@ body {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+}
+
+.circle {
+    border: 5px solid rgba(240, 0, 17, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.circle:first-of-type {
+    width: 38px;
+    height: 38px;
+    border: 5px solid rgba(240, 0, 47, 0.19);
+    position: absolute;
+    left: 5rem;
+    top: 50vh;
+}
+
+.circle:nth-child(2) {
+    width: 15px;
+    height: 15px;
+    border: 3px solid rgba(240, 0, 27, 0.1);
+    position: absolute;
+    top: 80vh;
+    left: 40vw;
+}
+
+.circle:nth-child(3) {
+    position: absolute;
+    top: 60vh;
+    right: 5rem;
 }
 
 #menu {
