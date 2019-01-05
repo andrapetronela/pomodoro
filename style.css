@@ -59,9 +59,12 @@ h1 {
 #break-title,
 #session-title {
     grid-column: 1 / -1;
-    margin: 1rem 0;
+    margin: 2rem 0;
 }
 
+#session-title {
+    margin-top: 5rem;
+}
 
 #timer-label {
     grid-column: 2 / 6;
