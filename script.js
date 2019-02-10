@@ -45,6 +45,7 @@ class App extends React.Component {
             } else if (this.state.seconds == 0 && this.state.minutes == 0 && this.state.session_time) {
                 
                 document.getElementById('beep').play();
+                
                 clearInterval(this.interval);
                 this.setState({
                     minutes: this.state.minutes,
